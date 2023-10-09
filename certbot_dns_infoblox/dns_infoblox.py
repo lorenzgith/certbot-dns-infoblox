@@ -5,6 +5,7 @@ import time
 import infoblox_client.connector
 import infoblox_client.objects
 import zope.interface
+import certifi
 from certbot import interfaces
 from certbot.plugins import dns_common
 
@@ -50,6 +51,7 @@ class Authenticator(dns_common.DNSAuthenticator):
                 "hostname": "Hostname for Infoblox REST API.",
                 "username": "Username for Infoblox REST API.",
                 "password": "Password for Infoblox REST API.",
+                "ssl_verify": "Enable SSL_Verify for Infoblox REST API (True/False).",
                 "view": "View to use for TXT entries "
                         "(leave blank is view is not necessary)"
             },
@@ -65,7 +67,7 @@ class Authenticator(dns_common.DNSAuthenticator):
                     'host': self.credentials.conf("hostname"),
                     'username': self.credentials.conf("username"),
                     'password': self.credentials.conf("password"),
-                    'ssl_verify': False
+                    'ssl_verify': self.credentials.conf("ssl_verify")
                 })
             }
             if self.credentials.conf("view"):
