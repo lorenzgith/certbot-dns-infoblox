@@ -68,6 +68,7 @@ class Authenticator(dns_common.DNSAuthenticator):
                     'username': self.credentials.conf("username"),
                     'password': self.credentials.conf("password"),
                     'ssl_verify': self.credentials.conf("ssl_verify")
+                    'silent_ssl_warnings': True
                 })
             }
             if self.credentials.conf("view"):
