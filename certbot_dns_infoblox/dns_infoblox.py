@@ -65,7 +65,7 @@ class Authenticator(dns_common.DNSAuthenticator):
                     'host': self.credentials.conf("hostname"),
                     'username': self.credentials.conf("username"),
                     'password': self.credentials.conf("password"),
-                    'ssl_verify': True
+                    'ssl_verify': False
                 })
             }
             if self.credentials.conf("view"):
